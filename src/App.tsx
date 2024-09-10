@@ -1,11 +1,14 @@
-import './App.css'
+import Authenticated from "./Authenticated";
+import Unauthenticated from "./Unauthenticates";
 
 function App() {
-  return (
-    <>
-      <h1>News Dashboard</h1>
-    </>
+  const user = false;
+
+  return user ? (
+    <Authenticated/>
+  ) : (
+    <Unauthenticated/>
   )
-}
+};
 
 export default App

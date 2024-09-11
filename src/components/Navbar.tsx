@@ -24,7 +24,7 @@ function Navbar() {
           value="home" 
           id="home" 
           name="navbar"
-          checked={selected === 'home'}
+          checked={selected === "home"}
           onChange={handleChange}
         />
         Home
@@ -36,7 +36,7 @@ function Navbar() {
           value="saved" 
           id="saved" 
           name="navbar"
-          checked={selected === 'saved'}
+          checked={selected === "saved"}
           onChange={handleChange}
           />
         Saved

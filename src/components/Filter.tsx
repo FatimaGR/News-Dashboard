@@ -1,0 +1,12 @@
+function Filter() {
+  const sourceList: string[] = ["Source 1", "Source 2", "Source 3", "Source 4"];
+
+  return (
+    <>
+      <p>News Sources</p>
+      {sourceList?.map((source) => <button>{source}</button>)}
+    </>
+  )
+}
+
+export default Filter

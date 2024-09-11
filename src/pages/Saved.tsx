@@ -1,7 +1,10 @@
+import NewsCard from "../components/NewsCard";
+
 function Saved() {
   return (
     <>
-      <p>Saved news</p>
+      <p>Your saved news</p>
+      <NewsCard/>
     </>
   )
 }

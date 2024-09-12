@@ -4,7 +4,7 @@ function Filter() {
   return (
     <>
       <p>News Sources</p>
-      {sourceList?.map((source) => <button>{source}</button>)}
+      {sourceList?.map((source, index) => <button key={index}>{source}</button>)}
     </>
   )
 }

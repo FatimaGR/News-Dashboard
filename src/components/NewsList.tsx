@@ -3,7 +3,7 @@ import { NewsArticle } from "../interfaces";
 import { useState } from "react";
 
 interface NewsListProps{
-  newsList: NewsArticle[]
+  newsList: NewsArticle[];
 };
 
 function NewsList({ newsList }: NewsListProps) {
@@ -16,6 +16,6 @@ function NewsList({ newsList }: NewsListProps) {
       ))}
     </div>
   )
-}
+};
 
-export default NewsList
+export default NewsList;

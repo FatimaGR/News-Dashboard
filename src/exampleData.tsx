@@ -11,11 +11,6 @@ export const user: User = {
   providerData: []
 };
 
-export let savedNewsUser: SavedNews = {
-  userId: "123456",
-  savedArticles: ["Ohio dad tells Trump to stop using son's death for 'political gain' - BBC.com", "Swing state voters respond to the presidential debate: ‘Trump couldn’t even look at her!’ - The Guardian US"]
-};
-
 export const sources: Source[] = [
   {
     id: "bbc-news",

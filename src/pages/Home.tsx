@@ -10,9 +10,9 @@ import { newsArticles } from "../exampleData";
 function Home() {
   const [initialNews, setInitialNews] = useState<NewsArticle[]>([]);
   const [filteredNews, setFilteredNews] = useState<NewsArticle[]>([]);
-  const [loading, setLoading] = useState(true);
-  //const [filter, setFilter] = useState([]);
-  //const [sort, setSort] = useState("");
+  const [loading, setLoading] = useState<boolean>(true);
+  const [filter, setFilter] = useState<string[]>([]);
+  const [sort, setSort] = useState<string>("");
 
   useEffect(() => {
     setLoading(true);
@@ -21,24 +21,59 @@ function Home() {
     setLoading(false);
   },[]);
 
+  useEffect(() => {
+    let updatedNews = [...initialNews];
+
+    if (filter.length > 0){
+      updatedNews = updatedNews.filter(article => filter.includes(article.source.name));
+    };
+
+    if (sort === "title"){
+      updatedNews.sort((a, b) => a.title.localeCompare(b.title));
+    } else if (sort === "date"){
+      updatedNews.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+    };
+
+    setFilteredNews(updatedNews);
+  }, [filter, sort, initialNews]);
+
+  const handleFilter = (newFilter: string[]): void =>{
+    setFilter(newFilter);
+  };
+
+  const handleSort = (e: React.ChangeEvent<HTMLInputElement>): void =>{
+    const value = e.target.value;
+    setSort(value);
+  };
+
   return (
-    <>
+    <div className="home-container">
       <h3>Recent news</h3>
       <RecentNewsCard/>
       <h3>All news</h3>
-      <div>
-        <Sort/>
-        <Sort/>
+      <div className="sort-container">
+        <Sort
+          id={"title"}
+          value={"title"}
+          onChange={handleSort}
+          label={"Sort alphabetically"}
+        />
+        <Sort
+          id={"date"}
+          value={"date"}
+          onChange={handleSort}
+          label={"Sort by newest"}
+        />
         <Search/>
       </div>
-      <Filter/>
+      <Filter filter={filter} onFilterChange={handleFilter}/>
       {loading ? (
         <p>Loading...</p>
       ) : (
         <NewsList newsList={filteredNews}/>
       )}
-    </>
+    </div>
   )
-}
+};
 
-export default Home
+export default Home;

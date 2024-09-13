@@ -17,8 +17,8 @@ function Navbar() {
   };
 
   return (
-    <>
-      <label htmlFor="home">
+    <div className="nav-container">
+      <label htmlFor="home" className="nav-btn">
         <input 
           type="radio" 
           value="home" 
@@ -30,7 +30,7 @@ function Navbar() {
         Home
       </label>
 
-      <label htmlFor="saved">
+      <label htmlFor="saved" className="nav-btn">
         <input 
           type="radio" 
           value="saved" 
@@ -41,8 +41,8 @@ function Navbar() {
           />
         Saved
       </label>
-    </>
+    </div>
   )
-}
+};
 
-export default Navbar
+export default Navbar;

@@ -2,10 +2,10 @@ import Search from "../components/Search";
 import Filter from "../components/Filter";
 import Sort from "../components/Sort";
 import NewsList from "../components/NewsList";
-import RecentNewsCard from "../components/RecentNewsCard";
 import { useEffect, useState } from "react";
 import { NewsArticle } from "../interfaces";
 import { newsArticles } from "../exampleData";
+import RecentNewsList from "../components/RecentNewsList";
 
 function Home() {
   const [initialNews, setInitialNews] = useState<NewsArticle[]>([]);
@@ -63,7 +63,7 @@ function Home() {
   return (
     <div className="home-container">
       <h3>Recent news</h3>
-      <RecentNewsCard/>
+      <RecentNewsList recentNewsList={filteredNews.slice(0,6)}/>
       <h3>All news</h3>
       <div className="sort-container">
         <Sort

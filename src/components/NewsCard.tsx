@@ -1,6 +1,7 @@
 import { NewsArticle } from "../interfaces";
 import save from "../assets/save.svg";
 import saved from "../assets/saved.svg";
+import defaultImg from "../assets/news-default-img.png";
 import { useState } from "react";
 
 interface NewsCardProps{
@@ -8,7 +9,6 @@ interface NewsCardProps{
   savedNews: string[];
   setSavedNews: (news: string[]) => void;
 };
-
 
 function NewsCard({ article, savedNews, setSavedNews }: NewsCardProps) {
   
@@ -35,7 +35,7 @@ function NewsCard({ article, savedNews, setSavedNews }: NewsCardProps) {
       <button onClick={handleSave} className="i-btn">
         <img src={isSaved? saved : save} alt={article.title}/>
       </button>
-      <img src={article.urlToImage || "../assets/news-default-img.png"} alt={article.title} />
+      <img src={article.urlToImage || defaultImg} alt={article.title} />
       <div className="news-card-detail">
         <p>{article.source.name}</p>
         <p>{new Date(article.publishedAt).toLocaleDateString()}</p>

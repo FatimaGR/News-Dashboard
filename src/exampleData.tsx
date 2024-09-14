@@ -1,4 +1,4 @@
-import { NewsArticle, NewsArticleSource, SavedNews, User } from "./interfaces";
+import { NewsArticle, NewsArticleSource, User } from "./interfaces";
 import { Source } from "./interfaces";
 
 export const user: User = {
@@ -148,15 +148,27 @@ export const newsArticles: NewsArticle[] = [
     content: "Join Fox News for access to this content\r\nPlus special access to select articles and other premium content with your account - free of charge.\r\nBy entering your email and pushing continue, you are ag… [+7157 chars]"
   }, {
     source: {
+      id: "bbc-news",
+      name: "BBC News"
+    },
+    author: null,
+    title: "Israeli special forces raid missile site in Syria - US reports - BBC.com",
+    description: "US media say the operation included special forces who rappelled down from helicopters.",
+    url: "https://www.bbc.com/news/articles/c89w98xnjk2o",
+    urlToImage: "https://ichef.bbci.co.uk/news/1024/branded_news/049f/live/ac2939c0-7150-11ef-9e68-2f2462ff3aca.png",
+    publishedAt: "2024-09-13T22:59:04Z",
+    content: "Damage on the outskirts of Masyaf this week\r\nDetails are emerging of an apparent raid by Israeli special forces on a \"Hezbollah missile production facility\" in Syria. \r\nIsrael's government has said n… [+2723 chars]"
+  }, {
+    source: {
       id: "fox-news",
       name: "Fox News"
     },
-    author: "Rémy Numa",
-    title: "Fox News Power Rankings: Trump loses his edge as we brace again for post-debate impact",
-    description: "The latest Fox News Power Rankings presidential forecast has Vice President Kamala Harris in the lead, but this election is still anyone's game.",
-    url: "https://www.foxnews.com/politics/fox-news-power-rankings-trump-loses-his-edge-forecast-we-brace-again-post-debate-impact",
-    urlToImage: "https://static.foxnews.com/foxnews.com/content/uploads/2024/09/ELEC24_FS_POWER_RANKINGS_Forecast_Map.png",
-    publishedAt: "2024-09-12T12:55:12Z",
-    content: "Join Fox News for access to this content\r\nPlus special access to select articles and other premium content with your account - free of charge.\r\nBy entering your email and pushing continue, you are ag… [+7157 chars]"
+    author: "Brie Stimson",
+    title: "NASA astronauts not 'fretting' over extended mission, 'grateful' for more time in space after Starliner woes - Fox News",
+    description: "The Boeing Starliner astronauts say they’re \"not surprised when plans get changed\" after their return home from the ISS was delayed by months.",
+    url: "https://www.foxnews.com/us/nasa-astronauts-not-fretting-over-extended-mission-grateful-extra-time-space-nasa-astronauts-not-fretting-over-extended-mission-grateful-extra-time-space-starliner",
+    urlToImage: "https://static.foxnews.com/foxnews.com/content/uploads/2024/09/iss-presser.jpg",
+    publishedAt: "2024-09-13T21:56:54Z",
+    content: "NASA astronauts Suni Williams and Butch Wilmore assured folks Friday theyre not \"fretting\" over being delayed in returning to Earth by several months and that they are \"grateful\" for the extra time i… [+4686 chars]"
   }
 ];

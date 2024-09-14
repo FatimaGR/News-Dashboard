@@ -10,7 +10,7 @@ function NewsList({ newsList }: NewsListProps) {
   const [savedNews, setSavedNews] = useState<string[]>([]);
 
   return (
-    <div className="list-container">
+    <div className="news-list-container">
       {newsList.map((news, index) => (
         <NewsCard key={index} article={news} savedNews={savedNews} setSavedNews={setSavedNews}/>
       ))}

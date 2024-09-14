@@ -1,12 +1,19 @@
-function RecentNewsCard() {
+import { NewsArticle } from "../interfaces";
+import defaultImg from "../assets/recent-news-default-img.png";
+
+interface RecentNewsCardProps{
+  article: NewsArticle;
+}
+
+function RecentNewsCard({article}: RecentNewsCardProps) {
   return (
-    <>
-      <img src="" alt="Recent news image" />
-      <div>
-        <p>News Title</p>
-        <button>Read more</button>
+    <div className="recent-news-card-container">
+      <img src={article.urlToImage || defaultImg} alt={article.title}/>
+      <div className="recent-news-card-info">
+        <p>{article.title}</p>
+        <button className="x-btn">Read more</button>
       </div>
-    </>
+    </div>
   )
 }
 

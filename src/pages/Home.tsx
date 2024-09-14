@@ -37,6 +37,20 @@ function Home() {
     setFilteredNews(updatedNews);
   }, [filter, sort, initialNews]);
 
+  const handleSearchSubmit = (title: string): void => {
+    const titleUpper: string = title.toUpperCase();
+
+    if (title != "" && filter.length > 0){
+      const newsSearched = filteredNews.filter(article => article.title.toUpperCase().includes(titleUpper));
+      setFilteredNews(newsSearched);
+    } else if (title != "" && filter.length === 0){
+      const newsSearched = initialNews.filter(article => article.title.toUpperCase().includes(titleUpper));
+      setFilteredNews(newsSearched);
+    } else {
+      setFilteredNews(initialNews);
+    };
+  };
+
   const handleFilter = (newFilter: string[]): void =>{
     setFilter(newFilter);
   };
@@ -64,7 +78,7 @@ function Home() {
           onChange={handleSort}
           label={"Sort by newest"}
         />
-        <Search/>
+        <Search onSubmit={handleSearchSubmit}/>
       </div>
       <Filter filter={filter} onFilterChange={handleFilter}/>
       {loading ? (

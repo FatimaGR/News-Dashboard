@@ -20,7 +20,7 @@ function SignUp() {
 
   const [errors, setErrors] = useState<{[key: string]: string}>({});
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>): void{
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     let newErrors: {[key: string]: string} = {};
 
@@ -37,7 +37,7 @@ function SignUp() {
     }
   }
 
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>): void{
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const {name, value} = event.target;
     setFormData({ ...formData, [name]: value});
   }

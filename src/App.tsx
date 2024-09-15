@@ -1,8 +1,9 @@
 import Authenticated from "./Authenticated";
 import Unauthenticated from "./Unauthenticates";
+import { useAuth } from "./context/auth-context";
 
 function App() {
-  const user = true;
+  const { user } = useAuth();
 
   return user ? (
     <Authenticated/>
@@ -11,4 +12,4 @@ function App() {
   )
 };
 
-export default App
+export default App;

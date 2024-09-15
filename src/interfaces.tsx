@@ -11,7 +11,7 @@ export interface User {
 export interface SavedNews {
   userId: string;
   savedArticles: string[];
-}
+};
 
 export interface ProviderData {
   providerId: string;

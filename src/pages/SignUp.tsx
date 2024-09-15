@@ -4,16 +4,17 @@ import { useState } from "react";
 import Username from "../assets/user.svg";
 import Email from "../assets/email.svg";
 import Password from "../assets/password.svg";
+import { useAuth } from "../context/auth-context";
 
 interface FormData{
-  username: string;
+  //username: string;
   email: string;
   password: string;
 };
 
 function SignUp() {
   const [formData, setFormData] = useState<FormData>({
-    username: "",
+    //username: "",
     email: "",
     password: "",
   });
@@ -25,7 +26,7 @@ function SignUp() {
     let newErrors: {[key: string]: string} = {};
 
     //validations
-    if (!formData.username) newErrors.username = "Name is required";
+    //if (!formData.username) newErrors.username = "Name is required";
     if (!formData.email) newErrors.email = "Email is required";
     if (!formData.password) newErrors.password = "Password is required";
     if (formData.password.length < 6) newErrors.password = "Password must be at least 6 characters";
@@ -47,16 +48,18 @@ function SignUp() {
       <div className="unauthenticated-content">
         <h2>SignUp</h2>
         <form onSubmit={handleSubmit} className="form-container">
-          <Input
-            id="username"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            label="Username"
-            placeholder="Username21"
-            error={errors.username}
-            img={Username}
-          />
+          {
+          //<Input
+          //  id="username"
+          //  name="username"
+          //  value={formData.username}
+          //  onChange={handleChange}
+          //  label="Username"
+          //  placeholder="Username21"
+          //  error={errors.username}
+          //  img={Username}
+          ///>
+          }
           <Input
             id="email"
             name="email"

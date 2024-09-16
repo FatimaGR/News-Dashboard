@@ -1,6 +1,6 @@
 import { createUserWithEmailAndPassword, User, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { doc, onSnapshot, setDoc } from "firebase/firestore";
 import { auth, db } from "../firebase-config";
 
 interface AuthContextProps{
@@ -18,24 +18,22 @@ export function AuthProvider({children}: {children: ReactNode}){
   const [userData, setUserData] = useState<any | null>(null);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+    const unsubscribeAuth = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
 
       if (currentUser){
         const userDocRef = doc(db, "users", currentUser.uid);
-        const userSnapshot = await getDoc(userDocRef);
+        const unsubscribeUserData = onSnapshot(userDocRef, (doc) =>{
+          setUserData(doc.data() || null);
+        })
 
-        if (userSnapshot.exists()) {
-          setUserData(userSnapshot.data());
-        } else {
-          setUserData(null);
-        }
+        return () => unsubscribeUserData();
       } else {
         setUserData(null);
       }
     });
 
-    return () => unsubscribe();
+    return () => unsubscribeAuth();
   }, []);
 
   const signUp = async (email: string, password: string, username: string) => {

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "../components/Input";
 import { useState } from "react";
 import Username from "../assets/user.svg";
@@ -7,26 +7,28 @@ import Password from "../assets/password.svg";
 import { useAuth } from "../context/auth-context";
 
 interface FormData{
-  //username: string;
+  username: string;
   email: string;
   password: string;
 };
 
 function SignUp() {
   const [formData, setFormData] = useState<FormData>({
-    //username: "",
+    username: "",
     email: "",
     password: "",
   });
 
   const [errors, setErrors] = useState<{[key: string]: string}>({});
+  const { signUp } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     let newErrors: {[key: string]: string} = {};
 
     //validations
-    //if (!formData.username) newErrors.username = "Name is required";
+    if (!formData.username) newErrors.username = "Name is required";
     if (!formData.email) newErrors.email = "Email is required";
     if (!formData.password) newErrors.password = "Password is required";
     if (formData.password.length < 6) newErrors.password = "Password must be at least 6 characters";
@@ -35,6 +37,8 @@ function SignUp() {
 
     if (Object.keys(newErrors).length === 0){
       console.log(formData);
+      signUp(formData.email, formData.password, formData.username);
+      navigate("/");
     }
   }
 
@@ -49,16 +53,16 @@ function SignUp() {
         <h2>SignUp</h2>
         <form onSubmit={handleSubmit} className="form-container">
           {
-          //<Input
-          //  id="username"
-          //  name="username"
-          //  value={formData.username}
-          //  onChange={handleChange}
-          //  label="Username"
-          //  placeholder="Username21"
-          //  error={errors.username}
-          //  img={Username}
-          ///>
+          <Input
+            id="username"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+            label="Username"
+            placeholder="Username21"
+            error={errors.username}
+            img={Username}
+          />
           }
           <Input
             id="email"

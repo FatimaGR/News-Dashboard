@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "../components/Input";
 import { useState } from "react";
 import Email from "../assets/email.svg";
 import Password from "../assets/password.svg";
+import { useAuth } from "../context/auth-context";
 
 interface FormData{
   email: string;
@@ -16,6 +17,8 @@ function Login() {
   });
 
   const [errors, setErrors] = useState<{[key: string]: string}>({});
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void =>{
     event.preventDefault();
@@ -29,6 +32,8 @@ function Login() {
 
     if (Object.keys(newErrors).length === 0){
       console.log(formData);
+      login(formData.email, formData.password);
+      navigate("/");
     }
 
   }

@@ -1,11 +1,13 @@
 import { createUserWithEmailAndPassword, User, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
-import { auth } from "../firebase-config";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { auth, db } from "../firebase-config";
 
 interface AuthContextProps{
   user: User | null;
+  userData: any | null;
   login: (email: string, password: string) => Promise<User | null>;
-  signUp: (email: string, password: string) => Promise<User | null>;
+  signUp: (email: string, password: string, username: string) => Promise<User | null>;
   logout: () => Promise<void>;
 }
 
@@ -13,18 +15,39 @@ const AuthContext = createContext<AuthContextProps | undefined>(undefined);
 
 export function AuthProvider({children}: {children: ReactNode}){
   const [user, setUser] = useState<User | null>(null);
+  const [userData, setUserData] = useState<any | null>(null);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
-    });
-    return () => unsubscribe();
-  }, [auth]);
 
-  const signUp = async (email: string, password: string) => {
+      if (currentUser){
+        const userDocRef = doc(db, "users", currentUser.uid);
+        const userSnapshot = await getDoc(userDocRef);
+
+        if (userSnapshot.exists()) {
+          setUserData(userSnapshot.data());
+        } else {
+          setUserData(null);
+        }
+      } else {
+        setUserData(null);
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  const signUp = async (email: string, password: string, username: string) => {
     try{
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      return userCredential.user;
+      const registeredUser = userCredential.user;
+
+      await setDoc(doc(db, "users", registeredUser.uid), {
+        username: username,
+        savedNews: []
+      });
+      return registeredUser;
     } catch (error){
       console.error("Sign up error", error);
       return null;
@@ -52,7 +75,7 @@ export function AuthProvider({children}: {children: ReactNode}){
 
   return(
     <AuthContext.Provider value ={{
-      user, signUp, login, logout
+      user, userData, signUp, login, logout
     }}>
       {children}
     </AuthContext.Provider>

@@ -3,29 +3,46 @@ import save from "../assets/save.svg";
 import saved from "../assets/saved.svg";
 import defaultImg from "../assets/news-default-img.png";
 import { useState } from "react";
+import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { db } from "../firebase-config";
+import { useAuth } from "../context/auth-context";
 
 interface NewsCardProps{
   article: NewsArticle;
-  savedNews: string[];
-  setSavedNews: (news: string[]) => void;
+  userSavedNews: string[];
 };
 
-function NewsCard({ article, savedNews, setSavedNews }: NewsCardProps) {
+function NewsCard({ article, userSavedNews }: NewsCardProps) {
+  const { user } = useAuth();
   
   const isArticleSaved = (articleId: string): boolean => {
-    return savedNews.includes(articleId);
+    return userSavedNews.includes(articleId);
   };
   
   const [isSaved, setIsSaved] = useState<boolean>(isArticleSaved(article.title));
 
-  const handleSave = (): void => {
-    const articleId = article.title;
-    
-    let updatedSavedNews = isSaved
-    ? savedNews.filter(title => title !== articleId)
-    : [...savedNews, articleId];
+  const handleSave = async (): Promise<void> => {
+    if (!user){
+      console.log("User is not authenticated");
+      return;
+    };
 
-    setSavedNews(updatedSavedNews);
+    const articleId = article.title;
+    const docRef = doc(db, "users", user.uid);
+    
+    try {
+      if (isSaved){
+        await updateDoc(docRef, { 
+          savedNews: arrayRemove(articleId), 
+        });
+      } else {
+        await updateDoc(docRef, { 
+          savedNews: arrayUnion(articleId), 
+        });
+      };
+    } catch (error){
+      console.log("Actualize article state error");
+    };
 
     setIsSaved(!isSaved);
   };

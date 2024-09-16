@@ -1,18 +1,22 @@
 import NewsCard from "./NewsCard";
 import { NewsArticle } from "../interfaces";
-import { useState } from "react";
+import { useAuth } from "../context/auth-context";
 
 interface NewsListProps{
   newsList: NewsArticle[];
 };
 
 function NewsList({ newsList }: NewsListProps) {
-  const [savedNews, setSavedNews] = useState<string[]>([]);
+  const { user, userData } = useAuth();
+
+  if (!user || !userData){
+    return;
+  };
 
   return (
     <div className="news-list-container">
       {newsList.map((news, index) => (
-        <NewsCard key={index} article={news} savedNews={savedNews} setSavedNews={setSavedNews}/>
+        <NewsCard key={index} article={news} userSavedNews={userData.savedNews}/>
       ))}
     </div>
   )

@@ -4,21 +4,37 @@ import Sort from "../components/Sort";
 import NewsList from "../components/NewsList";
 import { useEffect, useState } from "react";
 import { NewsArticle } from "../interfaces";
-import { newsArticles } from "../exampleData";
 import RecentNewsList from "../components/RecentNewsList";
+import { getNews, getTopNews } from "../services/services";
 
 function Home() {
   const [initialNews, setInitialNews] = useState<NewsArticle[]>([]);
   const [filteredNews, setFilteredNews] = useState<NewsArticle[]>([]);
+  const [topNews, setTopNews] = useState<NewsArticle[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [filter, setFilter] = useState<string[]>([]);
   const [sort, setSort] = useState<string>("");
 
   useEffect(() => {
     setLoading(true);
-    setInitialNews(newsArticles);
-    setFilteredNews(newsArticles);
-    setLoading(false);
+    getTopNews()
+      .then((news) => {
+        setTopNews(news.articles.slice(0,6));
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    getNews()
+      .then((news) => {
+        setInitialNews(news.articles);
+        setFilteredNews(news.articles);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   },[]);
 
   useEffect(() => {
@@ -63,7 +79,7 @@ function Home() {
   return (
     <div className="home-container">
       <h3>Recent news</h3>
-      <RecentNewsList recentNewsList={filteredNews.slice(0,6)}/>
+      <RecentNewsList recentNewsList={topNews}/>
       <h3>All news</h3>
       <div className="sort-container">
         <Sort

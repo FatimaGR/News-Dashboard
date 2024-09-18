@@ -52,7 +52,11 @@ function NewsCard({ article, userSavedNews }: NewsCardProps) {
       <button onClick={handleSave} className="i-btn">
         <img src={isSaved? saved : save} alt={article.title}/>
       </button>
-      <img src={article.urlToImage || defaultImg} alt={article.title} />
+      <img 
+        src={article.urlToImage || defaultImg} 
+        alt={article.title}
+        onError={(e) => { e.currentTarget.src = defaultImg; }}
+      />
       <div className="news-card-detail">
         <p>{article.source.name}</p>
         <p>{new Date(article.publishedAt).toLocaleDateString()}</p>

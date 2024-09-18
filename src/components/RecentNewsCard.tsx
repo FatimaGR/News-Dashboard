@@ -8,7 +8,11 @@ interface RecentNewsCardProps{
 function RecentNewsCard({article}: RecentNewsCardProps) {
   return (
     <div className="recent-news-card-container">
-      <img src={article.urlToImage || defaultImg} alt={article.title}/>
+      <img 
+        src={article.urlToImage || defaultImg} 
+        alt={article.title} 
+        onError={(e) => { e.currentTarget.src = defaultImg; }}
+      />
       <div className="recent-news-card-info">
         <p>{article.title}</p>
         <button className="x-btn">Read more</button>

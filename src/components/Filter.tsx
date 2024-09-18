@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { sources } from "../exampleData";
+import { NewsArticle } from "../interfaces";
+import { getNews } from "../services/services";
 
 interface FilterProps{
   filter: string[];
@@ -8,6 +9,29 @@ interface FilterProps{
 
 function Filter({ filter, onFilterChange }: FilterProps) {
   const [localFilter, setLocalFilter] = useState<string[]>([]);
+  const [sources, setSources] = useState<string[]>([]);
+
+  const getSources = (news:NewsArticle[]) => {
+    let sources: string[] = [];
+    news.map((article) => {
+      const sourceName:string = article.source.name;
+      if (!sources.includes(sourceName) && sourceName !== "[Removed]"){
+        sources.push(sourceName);
+      }
+    });
+    return sources;
+  };
+
+  useEffect(() => {
+    getNews()
+      .then((list) => {
+        const sourcesList = getSources(list.articles);
+        setSources(sourcesList);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  },[]);
 
   useEffect(() => {
     setLocalFilter(filter);
@@ -31,13 +55,13 @@ function Filter({ filter, onFilterChange }: FilterProps) {
     <div className="source-container">
       <p>News Sources</p>
       {sources?.map((source, index) => (
-        <label key={index} htmlFor={source.id || source.name} className="is-btn">
-          {source.name}
+        <label key={index} htmlFor={source} className="is-btn">
+          {source}
           <input 
             type="checkbox" 
-            id={source.id || source.name}
-            name={source.name}
-            value={source.name}
+            id={source}
+            name={source}
+            value={source}
             onChange={handleCheckbox}
           />
         </label>

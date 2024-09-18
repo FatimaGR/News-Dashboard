@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import NewsCard from "../components/NewsCard";
 import { useAuth } from "../context/auth-context";
-import { newsArticles } from "../exampleData";
 import { NewsArticle } from "../interfaces";
+import { getNews } from "../services/services";
 
 function Saved() {
   const { user, userData } = useAuth();
@@ -11,8 +11,19 @@ function Saved() {
     return;
   };
   
+  const [newsArticles, setNewsArticles] = useState<NewsArticle[]>([]);
   const [savedNewsList, setSavedNewsList] = useState<NewsArticle[]>([]);
   
+  useEffect(() => {
+    getNews()
+      .then((news) => {
+        setNewsArticles(news.articles);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  },[]);
+
   useEffect(() => {
     if (userData.savedNews) {
       const savedNewsTitles = userData.savedNews;
@@ -20,7 +31,7 @@ function Saved() {
         savedNewsTitles.includes(article.title)
       ));
     }
-  }, [userData.savedNews]);
+  }, [newsArticles, userData.savedNews]);
 
   return (
     <div className="saved-news-list-container">

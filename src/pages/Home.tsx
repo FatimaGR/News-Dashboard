@@ -54,7 +54,7 @@ function Home() {
   }, [filter, sort, initialNews]);
 
   const handleSearchSubmit = (title: string): void => {
-    const titleUpper: string = title.toUpperCase();
+    const titleUpper = title.toUpperCase();
 
     if (title != "" && filter.length > 0){
       const newsSearched = filteredNews.filter(article => article.title.toUpperCase().includes(titleUpper));

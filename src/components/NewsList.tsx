@@ -10,7 +10,7 @@ interface NewsListProps{
 const pagination = (data:NewsArticle[], page:number, limit:number): NewsArticle[] => {
   const startId = (page - 1) * limit;
   const endId = page * limit;
-  const paginatedData = data?.slice(startId, endId);
+  const paginatedData: NewsArticle[] = data?.slice(startId, endId);
   return paginatedData;
 };
 
@@ -18,7 +18,7 @@ function NewsList({ newsList }: NewsListProps) {
   const { user, userData } = useAuth();
   const [page, setPage] = useState<number>(1);
   const limit: number = 20;
-  const paginatedNewsList = pagination(newsList, page, limit);
+  const paginatedNewsList: NewsArticle[] = pagination(newsList, page, limit);
 
   if (!user || !userData){
     return;

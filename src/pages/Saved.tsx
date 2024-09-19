@@ -19,14 +19,14 @@ function Saved() {
       .then((news) => {
         setNewsArticles(news.articles);
       })
-      .catch((error) => {
+      .catch((error) => { 
         console.log(error);
       })
   },[]);
 
   useEffect(() => {
     if (userData.savedNews) {
-      const savedNewsTitles = userData.savedNews;
+      const savedNewsTitles: string[] = userData.savedNews;
       setSavedNewsList(newsArticles.filter(article => 
         savedNewsTitles.includes(article.title)
       ));

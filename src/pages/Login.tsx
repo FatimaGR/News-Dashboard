@@ -31,7 +31,6 @@ function Login() {
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0){
-      console.log(formData);
       login(formData.email, formData.password);
       navigate("/");
     }

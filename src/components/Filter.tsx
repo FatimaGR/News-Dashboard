@@ -14,7 +14,7 @@ function Filter({ filter, onFilterChange }: FilterProps) {
   const getSources = (news:NewsArticle[]) => {
     let sources: string[] = [];
     news.map((article) => {
-      const sourceName:string = article.source.name;
+      const sourceName = article.source.name;
       if (!sources.includes(sourceName) && sourceName !== "[Removed]"){
         sources.push(sourceName);
       }

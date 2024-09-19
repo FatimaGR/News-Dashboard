@@ -6,6 +6,7 @@ import { useState } from "react";
 import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase-config";
 import { useAuth } from "../context/auth-context";
+import { useNavigate } from "react-router-dom";
 
 interface NewsCardProps{
   article: NewsArticle;
@@ -14,7 +15,13 @@ interface NewsCardProps{
 
 function NewsCard({ article, userSavedNews }: NewsCardProps) {
   const { user } = useAuth();
-  
+  const navigate = useNavigate();
+
+  const handleReadMore = () => {
+    const encodedTitle = encodeURIComponent(article.title);
+    navigate("/newsarticle/" + encodedTitle);
+  }
+
   const isArticleSaved = (articleId: string): boolean => {
     return userSavedNews.includes(articleId);
   };
@@ -63,7 +70,7 @@ function NewsCard({ article, userSavedNews }: NewsCardProps) {
       </div>
       <p>{article.title}</p>
       <p>{article.description}</p>
-      <button className="x-btn">Read more</button>
+      <button onClick={handleReadMore} className="x-btn">Read more</button>
     </div>
   )
 };

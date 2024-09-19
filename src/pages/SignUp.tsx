@@ -36,7 +36,6 @@ function SignUp() {
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0){
-      console.log(formData);
       signUp(formData.email, formData.password, formData.username);
       navigate("/");
     }

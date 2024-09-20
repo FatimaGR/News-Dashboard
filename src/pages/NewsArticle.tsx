@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { NewsArticle } from "../interfaces";
 import { getNews, getTopNews } from "../services/services";
 import { useNavigate, useParams } from "react-router-dom";
-import arrow from "../assets/arrow.svg";
-import date from "../assets/date.svg";
-import author from "../assets/author.svg";
-import source from "../assets/source.svg";
+import IconArrow from "../assets/arrow.svg";
+import IconDate from "../assets/date.svg";
+import IconAuthor from "../assets/author.svg";
+import IconSource from "../assets/source.svg";
+import IconLink from "../assets/link.svg";
 
 interface NewsArticleProps{
   list: string;
@@ -51,7 +52,7 @@ function NewsArticlePage({list}: NewsArticleProps) {
     <div className="news-article-container">
       <div className="back-container">
         <button onClick={handleBack} className="i-btn">
-          <img src={arrow} alt="go back" />
+          <IconArrow/>
         </button>
         <p>Go back</p>
       </div>
@@ -64,28 +65,28 @@ function NewsArticlePage({list}: NewsArticleProps) {
           <hr />
           <ul className="news-article-facts">
             <li className="news-article-fact1">
-              <img src={date} alt="date" />
+              <IconDate/>
               <div>
                 <p>Date</p>
                 <p>{new Date(article.publishedAt).toLocaleDateString()}</p>
               </div>
             </li>
             <li className="news-article-fact1">
-              <img src={author} alt="author" />
+              <IconAuthor/>
               <div>
                 <p>Author</p>
                 <p>{article.author}</p>
               </div>
             </li>
             <li className="news-article-fact1">
-              <img src={source} alt="source" />
+              <IconSource/>
               <div>
                 <p>Source</p>
                 <p>{article.source.name}</p>
               </div>
             </li>
             <li className="news-article-fact2">
-              <img src={author} alt="author" />
+              <IconLink/>
               <a href={article.url || ""}>Link to original news</a>
             </li>
           </ul>

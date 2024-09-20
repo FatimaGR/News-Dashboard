@@ -1,9 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import Input from "../components/Input";
 import { useState } from "react";
-import Email from "../assets/email.svg";
-import Password from "../assets/password.svg";
+import IconEmail from "../assets/email.svg";
+import IconPassword from "../assets/password.svg";
 import { useAuth } from "../context/auth-context";
+import "../styles/Form.css";
 
 interface FormData{
   email: string;
@@ -19,8 +20,9 @@ function Login() {
   const [errors, setErrors] = useState<{[key: string]: string}>({});
   const { login } = useAuth();
   const navigate = useNavigate();
+  const [loginError, setLoginError] = useState<string>("");
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void =>{
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> =>{
     event.preventDefault();
     let newErrors: {[key: string]: string} = {};
 
@@ -31,15 +33,42 @@ function Login() {
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0){
-      login(formData.email, formData.password);
-      navigate("/");
+      const user = await login(formData.email, formData.password)
+      if (!user){
+          setLoginError("Incorrect email or password");
+      } else {
+        navigate("/");
+      }
     }
-
   }
   
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void =>{
     const {name, value} = event.target;
     setFormData({ ...formData, [name]: value});
+
+    let newErrors: {[key: string]: string} = {...errors};
+
+    if (name === "email"){
+      if (!value) {
+        newErrors.email = "Email is required";
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)){
+        newErrors.email = "Invalid email format";
+      } else {
+        delete newErrors.email;
+      }
+    };
+
+    if(name === "password"){
+      if(!value){
+        newErrors.password = "Password is required";
+      } else if (value.length < 6){
+        newErrors.password = "Invalid password";
+      } else {
+        delete newErrors.password;
+      }
+    };
+
+    setErrors(newErrors);
   }
 
   return (
@@ -55,7 +84,8 @@ function Login() {
             label="Email"
             placeholder="username@gmail.com"
             error={errors.email}
-            img={Email}
+            Icon={IconEmail}
+            isConfirmed={!errors.email && formData.email.length >= 6}
           />
           <Input
             id="password"
@@ -66,9 +96,11 @@ function Login() {
             label="Password"
             placeholder="Password"
             error={errors.password}
-            img={Password}
+            Icon={IconPassword}
+            isConfirmed={!errors.password && formData.password.length >= 6}
           />
-          <button type="submit" className="m2-btn">Login</button>
+          <button type="submit" className="m2-btn-light font-m">Login</button>
+          {loginError && <p className="font-s error-message">{loginError}</p>}
         </form>
         <p>
           Don't have an account?

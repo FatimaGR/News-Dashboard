@@ -7,14 +7,25 @@ interface InputProps{
   label: string;
   placeholder: string;
   error?: string;
-  img: string;
-}
+  Icon: React.FC<React.SVGProps<SVGSVGElement>> | string;
+  isConfirmed?: boolean;
+};
 
-function Input({id, name, type = "text", value, onChange, label, placeholder, img, error = ""}: InputProps): JSX.Element {
+function Input({id, name, type = "text", value, onChange, label, placeholder, Icon, error = "", isConfirmed}: InputProps): JSX.Element {
   return (
-    <div key={id}>
+    <div 
+      key={id} 
+      id={id} 
+      className={
+        error
+          ? "error-container"
+          : isConfirmed
+          ? "confirmed-container" 
+          : "input-container"
+      }
+    >
       <label htmlFor={id || name} className={error? "error-label" : "form-label"}>{label}</label>
-      <div>
+      <div className="form-input">
         <input
           type={type}
           name={name}
@@ -22,13 +33,12 @@ function Input({id, name, type = "text", value, onChange, label, placeholder, im
           value={value}
           onChange={onChange}
           placeholder={placeholder}
-          className={error? "error-input" : "form-input"}
         />
-        <img src={img} alt={name}/>
+        <Icon className="icon-input"/>
       </div>
-      {error && <p className="error-text">{error}</p>}
+      {error && <p className="font-xs">{error}</p>}
     </div>
   )
-}
+};
 
-export default Input
+export default Input;

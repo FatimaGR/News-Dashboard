@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import { NewsArticle } from "../interfaces";
 import RecentNewsList from "../components/RecentNewsList";
 import { getNews, getTopNews } from "../services/services";
+import IconSortaz from "../assets/sortaz.svg";
+import IconNewest from "../assets/source.svg";
 
 function Home() {
   const [initialNews, setInitialNews] = useState<NewsArticle[]>([]);
@@ -19,7 +21,9 @@ function Home() {
     setLoading(true);
     getTopNews()
       .then((news) => {
-        setTopNews(news.articles.slice(0,6));
+        const articles: NewsArticle[] = news.articles;
+        const validNews = articles.filter((article) => article.title !== "[Removed]")
+        setTopNews(validNews.slice(0,6));
       })
       .catch((error) => {
         console.log(error)
@@ -87,12 +91,14 @@ function Home() {
           value={"title"}
           onChange={handleSort}
           label={"Sort alphabetically"}
+          Icon={IconSortaz}
         />
         <Sort
           id={"date"}
           value={"date"}
           onChange={handleSort}
           label={"Sort by newest"}
+          Icon={IconNewest}
         />
         <Search onSubmit={handleSearchSubmit}/>
       </div>

@@ -1,0 +1,36 @@
+.search-input-light,
+.search-input-dark{
+  font-family: "Roboto", system-ui;
+  font-size: 0.889rem;
+}
+.search-input-light{
+  color: #3A7A57;
+}
+.search-input-light::placeholder{
+  color: #77DD77;
+  font-family: "Roboto", system-ui;
+  font-size: 0.889rem;
+}
+.search-input-dark{
+  color: #6BBF9F;
+}
+.search-input-dark::placeholder{
+  color: #CCFFCC;
+  font-family: "Roboto", system-ui;
+  font-size: 0.889rem;
+}
+.search-form-light,
+.search-form-dark{
+  background: transparent;
+  border-radius: 0.444rem;
+  padding: 0.278rem 0.556rem;
+  display: flex;
+  align-items: center;
+  gap: 0.278rem;
+}
+.search-form-light{
+  box-shadow: 0px 4px 4px #E0E0E0;
+}
+.search-form-dark{
+  box-shadow: 0px 4px 4px #1A1A1A;
+}

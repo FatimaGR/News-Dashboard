@@ -2,8 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/auth-context";
 import { useTheme } from "../context/theme-context";
-import light from "../assets/light.svg";
-import dark from "../assets/dark.svg";
+import IconLight from "../assets/light.svg";
+import IconDark from "../assets/dark.svg";
+import IconHome from "../assets/home.svg";
+import IconSaved from "../assets/saved.svg";
+import IconLogout from "../assets/logout.svg";
 
 function Navbar() {
   const [selected, setSelected] = useState("home");
@@ -27,7 +30,7 @@ function Navbar() {
     <div className="nav-container">
       <h2>News <br/> Dashboard</h2>
       <button onClick={changeTheme} className="theme-btn">
-        <img src={isDarkMode? dark : light} alt={isDarkMode? "moon" : "sun"} />
+        {isDarkMode? <IconDark/> : <IconLight/>}
         {isDarkMode? "DARK MODE" : "LIGHT MODE"}
       </button>
       <label htmlFor="home" className="nav-btn">
@@ -39,6 +42,7 @@ function Navbar() {
           checked={selected === "home"}
           onChange={handleChange}
         />
+        <IconHome/>
         Home
       </label>
 
@@ -51,9 +55,11 @@ function Navbar() {
           checked={selected === "saved"}
           onChange={handleChange}
           />
+          <IconSaved/>
         Saved
       </label>
       <button onClick={logout} className="nav-btn">
+        <IconLogout/>
         Logout
       </button>
     </div>

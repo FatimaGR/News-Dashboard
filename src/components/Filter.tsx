@@ -55,7 +55,7 @@ function Filter({ filter, onFilterChange }: FilterProps) {
     <div className="source-container">
       <p>News Sources</p>
       {sources?.map((source, index) => (
-        <label key={index} htmlFor={source} className="is-btn">
+        <label key={index} htmlFor={source} className="s-btn">
           {source}
           <input 
             type="checkbox" 

@@ -1,6 +1,16 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Index() {
+  const navigate = useNavigate();
+
+  const navigateSignUp = () => {
+    navigate("/signup");
+  }
+
+  const navigateLogin = () => {
+    navigate("/login");
+  }
+
   return (
     <div className="unauthenticated-background">
       <div className="unauthenticated-content">
@@ -9,8 +19,8 @@ function Index() {
           <h2>News Dashboard!</h2>
         </div>
         <p>Your trusted space for staying informed with clarity and peace of mind.</p>
-        <button className="m-btn"><Link to="/signup">Sign Up</Link></button>
-        <button className="m-btn"><Link to="/login">Login</Link></button>
+        <button onClick={navigateSignUp} className="m-btn-light font-m">Sign Up</button>
+        <button onClick={navigateLogin} className="m-btn-light font-m">Login</button>
       </div>
     </div>
   )

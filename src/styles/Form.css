@@ -1,0 +1,36 @@
+.form-input,
+.error-input{
+  background: transparent;
+  width: 100%;
+  border-radius: 0.556rem;
+  box-shadow: 0px 4px 4px #E0E0E0;
+  display: flex;
+  gap: 0.278rem;
+  justify-content: space-between;
+  padding: 0.444rem 0.889rem;
+}
+.input-container .icon-input,
+.form-input input::placeholder{
+  color: #B3B3B3;
+}
+.input-container,
+.confirmed-container{
+  display: flex;
+  flex-direction: column;
+  gap: 0.444rem;
+  color: #2E2E2E;
+}
+.input-container label,
+.confirmed-container label{
+  font-weight: 500;
+}
+.input-container:hover{
+  color: #77DD77;
+}
+.error-message,
+.error-container{
+  color: #E57373;
+}
+.confirmed-container{
+  color: #50C878;
+}

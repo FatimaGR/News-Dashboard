@@ -1,5 +1,6 @@
 import { useState } from "react";
-import SearchIcon from "../assets/search.svg";
+import IconSearch from "../assets/search.svg";
+import "../styles/Search.css";
 
 interface SearchProps{
   onSubmit: (title: string) => void;
@@ -19,16 +20,16 @@ function Search({onSubmit}: SearchProps) {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="search-form">
+      <form onSubmit={handleSubmit} className="search-form-light">
+        <button className="search-btn-light">
+          <IconSearch/>
+        </button>
         <input 
           type="text" 
           placeholder="Search..." 
-          className="search-input"
+          className="search-input-light"
           onChange={handleWordChange}
         />
-        <button className="search-btn">
-          <img src={SearchIcon} alt="search button"/>
-        </button>
       </form>
     </>
   )

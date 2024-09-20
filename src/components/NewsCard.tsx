@@ -1,6 +1,6 @@
 import { NewsArticle } from "../interfaces";
-import save from "../assets/save.svg";
-import saved from "../assets/saved.svg";
+import IconSave from "../assets/save.svg";
+import IconSaved from "../assets/saved.svg";
 import defaultImg from "../assets/news-default-img.png";
 import { useState } from "react";
 import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
@@ -57,7 +57,7 @@ function NewsCard({ article, userSavedNews }: NewsCardProps) {
   return (
     <div className="news-card-container">
       <button onClick={handleSave} className="i-btn">
-        <img src={isSaved? saved : save} alt={article.title}/>
+        {isSaved? <IconSaved/> : <IconSave/>}
       </button>
       <img 
         src={article.urlToImage || defaultImg} 

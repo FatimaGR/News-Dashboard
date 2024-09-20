@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+body{
+  margin: 0;
+  font-family: "Roboto", system-ui;
+  font-size: 18px;
+  line-height: 32px;
+}
+
+/* font styles */
+h1{
+  font-family: "Nunito", system-ui;
+  font-size: 2.222rem;
+  line-height: 2.667rem;
+  font-weight: 600;
+}
+h2{
+  font-family: "Nunito", system-ui;
+  font-size: 1.667rem;
+  line-height: 2rem;
+  font-weight: 600;
+}
+h3{
+  font-family: "Nunito", system-ui;
+  font-size: 1.333rem;
+  line-height: 1.722rem;
+  font-weight: 600;
+}
+.font-m{
+  font-family: "Roboto", system-ui;
+  font-size: 1rem;
+  line-height: 1.778rem;
+}
+.font-s{
+  font-family: "Roboto", system-ui;
+  font-size: 0.889rem;
+  line-height: 1.333rem;
+}
+.font-xs{
+  font-family: "Roboto", system-ui;
+  font-size: 0.778rem;
+  line-height: 1.167rem;
+}
+.font-2xs{
+  font-family: "Roboto", system-ui;
+  font-size: 0.667rem;
+  line-height: 0.889rem;
+}
+
+/* button styles */
+button{
+  border: none;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+input{
+  outline: none;
+  background: none;
+  border: none;
+  box-sizing: border-box;
+}
+div{
+  box-sizing: border-box;
+}
+
+.i-btn-light,
+.i-btn-dark{
+  background: #77DD77;
+  color: #F2F2F2;
+  width: 1.778rem;
+  height: 1.778rem;
+  border-radius: 100%;
+}
+.i-btn-light img,
+.i-btn-dark img{
+  width: 1.1rem;
+  height: 1.1rem;
+}
+.i-btn-light:hover{
+  background: #3A7A57;
+}
+.i-btn-dark:hover{
+  background: #6BBF9F;
+}
+
+.x-btn-light,
+.x-btn-dark{
+  background-color: transparent;
+  border-radius: 0.444rem;
+  padding: 0.444rem 0.278rem;
+}
+.x-btn-light{
+  color: #77DD77;
+  box-shadow: 0px 2px 4px #E0E0E0;
+}
+.x-btn-dark{
+  color: #CCFFCC;
+  box-shadow: 0px 2px 4px #1A1A1A;
+}
+.x-btn-light:hover{
+  color: #3A7A57;
+}
+.x-btn-dark:hover{
+  color: #6BBF9F;
+}
+
+.s-btn-light,
+.s-btn-dark{
+  background-color: transparent;
+  padding: 0.278rem 0.833rem;
+  border-radius: 0.444rem;
+}
+.s-btn-light{
+  box-shadow: 0px 2px 4px #E0E0E0;
+  color: #1B3B31;
+}
+.s-btn-dark{
+  box-shadow: 0px 2px 4px #1A1A1A;
+  color: #CCFFCC;
+}
+.s-btn-light:hover{
+  color: #F2F2F2;
+  background: #3A7A57;
+  box-shadow: none;
+}
+.s-btn-dark:hover{
+  color: #F2F2F2;
+  background: #6BBF9F;
+  box-shadow: none;
+}
+
+.is-btn-light,
+.is-btn-dark{
+  background-color: transparent;
+  padding: 0.278rem 0.556rem;
+  border-radius: 0.444rem;
+  font-weight: 500;
+  display: flex;
+  gap: 0.278rem;
+}
+.is-btn-light{
+  color: #77DD77;
+  box-shadow: 0px 4px 4px #E0E0E0;
+}
+.is-btn-dark{
+  color: #CCFFCC;
+  box-shadow: 0px 4px 4px #1A1A1A;
+}
+.is-btn-light:hover{
+  color: #3A7A57;
+}
+.is-btn-dark:hover{
+  color: #6BBF9F;
+}
+
+.m-btn-light,
+.m-btn-dark{
+  background: #77DD77;
+  color: #F2F2F2;
+  width: 16.667rem;
+  height: 2.778rem;
+  border-radius: 0.833rem;
+  font-weight: 600;
+}
+.m2-btn-light,
+.m2-btn-dark{
+  background: #77DD77;
+  color: #F2F2F2;
+  width: 10.889rem;
+  height: 2.778rem;
+  border-radius: 0.833rem;
+  font-weight: 600;
+}
+.m-btn-light:hover,
+.m2-btn-light:hover{
+  background: #3A7A57;
+}
+.m-btn-dark:hover,
+.m2-btn-dark:hover{
+  background: #6BBF9F;
+}
+
+.theme-btn-light,
+.theme-btn-dark{
+  border: none;
+  background: none;
+}
+.theme-btn-light img,
+.theme-btn-dark img{
+  background: #77DD77;
+  color: #F2F2F2;
+  width: 1.031rem;
+  height: 1.031rem;
+  padding: 0.333rem;
+  border-radius: 100%;
+  display: flex;
+  gap: 0.889rem;
+}
+.theme-btn-light{
+  color: #2E2E2E;
+}
+.theme-btn-dark{
+  color: #CCFFCC;
+}
+
+.nav-btn-light,
+.nav-btn-dark{
+  background: none;
+  border: none;
+  border-radius: 0.556rem;
+  padding: 0.833rem;
+  display: flex;
+  gap: 0.444rem;
+}
+.nav-btn-light img,
+.nav-btn-dark img{
+  width: 1.722rem;
+  height: 1.722rem;
+}
+.nav-btn-light{
+  color: #2E2E2E;
+}
+.nav-btn-dark{
+  color: #CCFFCC;
+}
+
+.search-btn-light,
+.search-btn-dark{
+  background: none;
+  font-size: 0.278rem;
+}
+.search-btn-light{
+  color: #77DD77;
+}
+.search-btn-light:hover{
+  color: #3A7A57;
+}
+.search-btn-dark{
+  color: #CCFFCC;
+}
+.search-btn-dark:hover{
+  color: #6BBF9F;
+}

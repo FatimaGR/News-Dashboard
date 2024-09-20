@@ -1,3 +1,35 @@
+.unauthenticated-background{
+  background: #77DD77;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.unauthenticated-content{
+  background: #fff;
+  width: 22.778rem;
+  min-height: 26.111rem;
+  border-radius: 1.111rem;
+  text-align: center;
+  padding: 1.778rem 1.333rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.333rem;
+}
+.unauthenticated-content p,
+.unauthenticated-content h2{
+  margin: 0;
+}
+.form-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.889rem;
+}
 .form-input,
 .error-input{
   background: transparent;
@@ -13,12 +45,17 @@
 .form-input input::placeholder{
   color: #B3B3B3;
 }
+.form-input input{
+  width: 100%;
+}
 .input-container,
 .confirmed-container{
   display: flex;
   flex-direction: column;
   gap: 0.444rem;
   color: #2E2E2E;
+  text-align: left;
+  width: 100%;
 }
 .input-container label,
 .confirmed-container label{
@@ -27,10 +64,22 @@
 .input-container:hover{
   color: #77DD77;
 }
-.error-message,
 .error-container{
   color: #E57373;
+  text-align: left;
+  width: 100%;
+}
+.login-error{
+  color: #E57373;
+  font-weight: 500;
 }
 .confirmed-container{
   color: #50C878;
+}
+.redirect-message,
+.redirect-message .link{
+  color: #616161;
+}
+.redirect-message .link{
+  font-weight: 700;
 }

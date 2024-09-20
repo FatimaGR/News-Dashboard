@@ -6,6 +6,9 @@ body{
   font-size: 18px;
   line-height: 32px;
 }
+a{
+  text-decoration: none;
+}
 
 /* font styles */
 h1{
@@ -45,6 +48,18 @@ h3{
   font-family: "Roboto", system-ui;
   font-size: 0.667rem;
   line-height: 0.889rem;
+}
+
+/* container styles */
+.authenticated-container-light{
+  display: flex;
+  gap: 1.111rem;
+  background: #fff;
+}
+.authenticated-container-dark{
+  display: flex;
+  gap: 1.111rem;
+  background: #2E2E2E;
 }
 
 /* button styles */

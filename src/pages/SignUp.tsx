@@ -124,10 +124,10 @@ function SignUp() {
           />
           <button type="submit" className="m2-btn-light font-m">Sign up</button>
         </form>
-        <p>
+        <p className="font-s redirect-message">
           Have an account?
           <br/>
-          <Link to="/login">Login</Link>
+          <Link to="/login" className="link">Login</Link>
         </p>
       </div>
     </div>

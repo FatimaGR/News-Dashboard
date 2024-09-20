@@ -3,11 +3,13 @@ import Home from "./pages/Home";
 import Saved from "./pages/Saved";
 import Navbar from "./components/Navbar";
 import NewsArticlePage from "./pages/NewsArticle";
-import { ThemeProvider } from "./context/theme-context";
+import { useTheme } from "./context/theme-context";
 
 function Authenticate() {
+  const { isDarkMode } = useTheme();
+
   return (
-    <ThemeProvider>
+    <div className={isDarkMode? "authenticated-container-dark" : "authenticated-container-light"}>
       <Navbar/>
       <Routes>
         <Route path="/" element={<Home/>}/>
@@ -15,7 +17,7 @@ function Authenticate() {
         <Route path="/newsarticle/:id" element={<NewsArticlePage list="general"/>}/>
         <Route path="/topnewsarticle/:id" element={<NewsArticlePage list="top"/>}/>
       </Routes>
-    </ThemeProvider>
+    </div>
   )
 };
 

@@ -100,12 +100,12 @@ function Login() {
             isConfirmed={!errors.password && formData.password.length >= 6}
           />
           <button type="submit" className="m2-btn-light font-m">Login</button>
-          {loginError && <p className="font-s error-message">{loginError}</p>}
+          {loginError && <p className="font-s login-error">{loginError}</p>}
         </form>
-        <p>
+        <p className="font-s redirect-message">
           Don't have an account?
           <br/>
-          <Link to="/signup">Sign Up</Link>
+          <Link to="/signup" className="link">Sign Up</Link>
         </p>
       </div>
     </div>

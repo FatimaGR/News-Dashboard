@@ -59,7 +59,7 @@ function NewsCard({ article, userSavedNews }: NewsCardProps) {
 
   return (
     <div className={isDarkMode? "news-card-container-dark" : "news-card-container-light"}>
-      <button onClick={handleSave} className="i-btn">
+      <button onClick={handleSave} className={isDarkMode? "i-btn-dark save" : "i-btn-light save"}>
         {isSaved? <IconSaved/> : <IconSave/>}
       </button>
       <img 
@@ -67,13 +67,13 @@ function NewsCard({ article, userSavedNews }: NewsCardProps) {
         alt={article.title}
         onError={(e) => { e.currentTarget.src = defaultImg; }}
       />
-      <div className="news-card-detail">
-        <p>{article.source.name}</p>
-        <p>{new Date(article.publishedAt).toLocaleDateString()}</p>
+      <div className={isDarkMode? "news-card-detail-dark" : "news-card-detail-light"}>
+        <p className="font-xs">{article.source.name}</p>
+        <p className="font-xs">{new Date(article.publishedAt).toLocaleDateString()}</p>
       </div>
-      <p>{article.title}</p>
-      <p>{article.description}</p>
-      <button onClick={handleReadMore} className="x-btn">Read more</button>
+      <p className="article-title">{article.title}</p>
+      <p className="article-description">{article.description}</p>
+      <button onClick={handleReadMore} className={isDarkMode? "x-btn-dark" : "x-btn-light"}>Read more</button>
     </div>
   )
 };

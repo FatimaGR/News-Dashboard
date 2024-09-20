@@ -24,7 +24,7 @@ function RecentNewsCard({article}: RecentNewsCardProps) {
         onError={(e) => { e.currentTarget.src = defaultImg; }}
       />
       <div className="recent-card-info">
-        <p className="font-s">{article.title}</p>
+        <p className="font-s article-title">{article.title}</p>
         <button 
           onClick={handleReadMore} 
           className={isDarkMode? "x-btn-dark" : "x-btn-light"}

@@ -82,6 +82,7 @@ h3{
 .news-list-content{
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   width: 100%;
   gap: 1.667rem;
 }
@@ -116,6 +117,9 @@ label{
   width: 1.778rem;
   height: 1.778rem;
   border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .i-btn-light svg,
 .i-btn-dark svg{

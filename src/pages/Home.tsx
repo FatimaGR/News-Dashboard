@@ -8,6 +8,7 @@ import RecentNewsList from "../components/RecentNewsList";
 import { getNews, getTopNews } from "../services/services";
 import IconSortaz from "../assets/sortaz.svg";
 import IconNewest from "../assets/source.svg";
+import { useTheme } from "../context/theme-context";
 
 function Home() {
   const [initialNews, setInitialNews] = useState<NewsArticle[]>([]);
@@ -16,6 +17,7 @@ function Home() {
   const [loading, setLoading] = useState<boolean>(true);
   const [filter, setFilter] = useState<string[]>([]);
   const [sort, setSort] = useState<string>("");
+  const { isDarkMode } = useTheme();
 
   useEffect(() => {
     setLoading(true);
@@ -81,7 +83,7 @@ function Home() {
   };
 
   return (
-    <div className="home-container">
+    <div className={isDarkMode? "page-container-dark" : "page-container-light"}>
       <h3>Recent news</h3>
       <RecentNewsList recentNewsList={topNews}/>
       <h3>All news</h3>

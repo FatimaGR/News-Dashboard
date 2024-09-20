@@ -1,0 +1,21 @@
+.nav-container-light,
+.nav-container-dark{
+  padding: 1.778rem 1.333rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: sticky;
+  gap: 1.333rem;
+  top: 0;
+  left: 0;
+  min-width: 16.944rem;
+  height: 100vh;
+}
+.nav-container-light{
+  background: #CCFFCC;
+  color: #2E2E2E;
+}
+.nav-container-dark{
+  background: #1B3B31;
+  color: #CCFFCC;
+}

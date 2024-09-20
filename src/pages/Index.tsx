@@ -15,10 +15,10 @@ function Index() {
     <div className="unauthenticated-background">
       <div className="unauthenticated-content">
         <div>
-          <p>Hi, welcome to</p>
+          <h3>Hi, welcome to</h3>
           <h2>News Dashboard!</h2>
         </div>
-        <p>Your trusted space for staying informed with clarity and peace of mind.</p>
+        <p className="font-s">Your trusted space for staying informed with clarity and peace of mind.</p>
         <button onClick={navigateSignUp} className="m-btn-light font-m">Sign Up</button>
         <button onClick={navigateLogin} className="m-btn-light font-m">Login</button>
       </div>

@@ -28,6 +28,11 @@
   align-items: center;
   gap: 0.278rem;
 }
+.search-form-light svg,
+.search-form-dark svg{
+  width: 1.111rem;
+  height: 1.111rem;
+}
 .search-form-light{
   box-shadow: 0px 4px 4px #E0E0E0;
 }

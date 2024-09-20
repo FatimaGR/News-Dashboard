@@ -7,6 +7,8 @@ import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase-config";
 import { useAuth } from "../context/auth-context";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "../context/theme-context";
+import "../styles/NewsCard.css";
 
 interface NewsCardProps{
   article: NewsArticle;
@@ -16,6 +18,7 @@ interface NewsCardProps{
 function NewsCard({ article, userSavedNews }: NewsCardProps) {
   const { user } = useAuth();
   const navigate = useNavigate();
+  const { isDarkMode } = useTheme();
 
   const handleReadMore = () => {
     const encodedTitle = encodeURIComponent(article.title);
@@ -55,7 +58,7 @@ function NewsCard({ article, userSavedNews }: NewsCardProps) {
   };
 
   return (
-    <div className="news-card-container">
+    <div className={isDarkMode? "news-card-container-dark" : "news-card-container-light"}>
       <button onClick={handleSave} className="i-btn">
         {isSaved? <IconSaved/> : <IconSave/>}
       </button>

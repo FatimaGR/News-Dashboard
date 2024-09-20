@@ -7,6 +7,7 @@ import IconDark from "../assets/dark.svg";
 import IconHome from "../assets/home.svg";
 import IconSaved from "../assets/saved.svg";
 import IconLogout from "../assets/logout.svg";
+import "../styles/Navbar.css"
 
 function Navbar() {
   const [selected, setSelected] = useState("home");
@@ -27,13 +28,18 @@ function Navbar() {
   const { logout } = useAuth();
 
   return (
-    <div className="nav-container">
-      <h2>News <br/> Dashboard</h2>
-      <button onClick={changeTheme} className="theme-btn">
+    <div className={isDarkMode? "nav-container-dark" : "nav-container-light"}>
+      <h1>News <br/> Dashboard</h1>
+      <button onClick={changeTheme} className={isDarkMode? "theme-btn-dark" : "theme-btn-light"}>
         {isDarkMode? <IconDark/> : <IconLight/>}
         {isDarkMode? "DARK MODE" : "LIGHT MODE"}
       </button>
-      <label htmlFor="home" className="nav-btn">
+      <label 
+        htmlFor="home" 
+        className={`${isDarkMode? "nav-btn-dark" : "nav-btn-light"} ${
+          selected === "home" ? "selected" : ""
+        }`}
+      >
         <input 
           type="radio" 
           value="home" 
@@ -46,7 +52,12 @@ function Navbar() {
         Home
       </label>
 
-      <label htmlFor="saved" className="nav-btn">
+      <label 
+        htmlFor="saved" 
+        className={`${isDarkMode? "nav-btn-dark" : "nav-btn-light"} ${
+          selected === "saved" ? "selected" : ""
+        }`}
+      >
         <input 
           type="radio" 
           value="saved" 
@@ -58,7 +69,7 @@ function Navbar() {
           <IconSaved/>
         Saved
       </label>
-      <button onClick={logout} className="nav-btn">
+      <button onClick={logout} className={isDarkMode? "nav-btn-dark" : "nav-btn-light"}>
         <IconLogout/>
         Logout
       </button>

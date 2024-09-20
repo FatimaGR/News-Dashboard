@@ -9,6 +9,9 @@ body{
 a{
   text-decoration: none;
 }
+*{
+  margin: 0;
+}
 
 /* font styles */
 h1{
@@ -61,6 +64,33 @@ h3{
   gap: 1.111rem;
   background: #2E2E2E;
 }
+.page-container-light,
+.page-container-dark{
+  padding: 1.667rem 1.778rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.111rem;
+  max-width: 100%;
+  min-height: 100vh;
+}
+.page-container-light{
+  color: #2E2E2E;
+}
+.page-container-dark{
+  color: #F2F2F2;
+}
+.news-list-content{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 1.667rem;
+}
+.recent-list-container{
+  display: flex;
+  justify-content: space-between;
+  gap: 1.111rem;
+  flex-wrap: wrap;
+}
 
 /* button styles */
 button{
@@ -74,7 +104,8 @@ input{
   border: none;
   box-sizing: border-box;
 }
-div{
+div,
+label{
   box-sizing: border-box;
 }
 
@@ -86,8 +117,8 @@ div{
   height: 1.778rem;
   border-radius: 100%;
 }
-.i-btn-light img,
-.i-btn-dark img{
+.i-btn-light svg,
+.i-btn-dark svg{
   width: 1.1rem;
   height: 1.1rem;
 }
@@ -199,17 +230,18 @@ div{
 .theme-btn-dark{
   border: none;
   background: none;
+  display: flex;
+  align-items: center;
+  gap: 0.889rem;
 }
-.theme-btn-light img,
-.theme-btn-dark img{
+.theme-btn-light svg,
+.theme-btn-dark svg{
   background: #77DD77;
   color: #F2F2F2;
   width: 1.031rem;
   height: 1.031rem;
   padding: 0.333rem;
   border-radius: 100%;
-  display: flex;
-  gap: 0.889rem;
 }
 .theme-btn-light{
   color: #2E2E2E;
@@ -220,15 +252,22 @@ div{
 
 .nav-btn-light,
 .nav-btn-dark{
+  font-size: 1.333rem;
   background: none;
   border: none;
   border-radius: 0.556rem;
+  width: 100%;
   padding: 0.833rem;
   display: flex;
   gap: 0.444rem;
+  cursor: pointer;
 }
-.nav-btn-light img,
-.nav-btn-dark img{
+.nav-btn-light input,
+.nav-btn-dark input{
+  display: none;
+}
+.nav-btn-light svg,
+.nav-btn-dark svg{
   width: 1.722rem;
   height: 1.722rem;
 }
@@ -237,6 +276,12 @@ div{
 }
 .nav-btn-dark{
   color: #CCFFCC;
+}
+.selected,
+.nav-btn-light:hover,
+.nav-btn-dark:hover{
+  background: #77DD77;
+  color: #F2F2F2;
 }
 
 .search-btn-light,

@@ -1,5 +1,6 @@
 import RecentNewsCard from "./RecentNewsCard";
 import { NewsArticle } from "../interfaces";
+import "../styles/NewsCard.css";
 
 interface RecentNewsListProps{
   recentNewsList: NewsArticle[];
@@ -7,7 +8,7 @@ interface RecentNewsListProps{
 
 function RecentNewsList({recentNewsList}: RecentNewsListProps) {
   return (
-    <div className="recent-news-list-container">
+    <div className="recent-list-container">
       {recentNewsList.map((recentNews, index) => (
         <RecentNewsCard key={index} article={recentNews}/>
       ))}

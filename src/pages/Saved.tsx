@@ -3,9 +3,11 @@ import NewsCard from "../components/NewsCard";
 import { useAuth } from "../context/auth-context";
 import { NewsArticle } from "../interfaces";
 import { getNews } from "../services/services";
+import { useTheme } from "../context/theme-context";
 
 function Saved() {
   const { user, userData } = useAuth();
+  const { isDarkMode } = useTheme();
   
   if (!user || !userData){
     return;
@@ -34,7 +36,7 @@ function Saved() {
   }, [newsArticles, userData.savedNews]);
 
   return (
-    <div className="saved-news-list-container">
+    <div className={isDarkMode? "page-container-light" : "page-container-dark"}>
       <h2>Your saved news</h2>
       {savedNewsList.length > 0 ? (
         savedNewsList.map((news) => (

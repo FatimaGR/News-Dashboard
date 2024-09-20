@@ -2,6 +2,7 @@ import NewsCard from "./NewsCard";
 import { NewsArticle } from "../interfaces";
 import { useAuth } from "../context/auth-context";
 import { useState } from "react";
+import { useTheme } from "../context/theme-context";
 
 interface NewsListProps{
   newsList: NewsArticle[];
@@ -19,6 +20,7 @@ function NewsList({ newsList }: NewsListProps) {
   const [page, setPage] = useState<number>(1);
   const limit: number = 20;
   const paginatedNewsList: NewsArticle[] = pagination(newsList, page, limit);
+  const { isDarkMode } = useTheme();
 
   if (!user || !userData){
     return;
@@ -37,12 +39,14 @@ function NewsList({ newsList }: NewsListProps) {
         <button 
           disabled={page === 1} 
           onClick={() => setPage(page - 1)}
+          className={isDarkMode? "s-btn-dark" : "s-btn-light"}
         >
           Previus
         </button>
         <button 
           disabled={paginatedNewsList.length < limit}
           onClick={() => setPage(page + 1)}
+          className={isDarkMode? "s-btn-dark" : "s-btn-light"}
         >
           Next
         </button>

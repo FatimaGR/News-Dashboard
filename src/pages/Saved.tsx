@@ -36,7 +36,7 @@ function Saved() {
   }, [newsArticles, userData.savedNews]);
 
   return (
-    <div className={isDarkMode? "page-container-light" : "page-container-dark"}>
+    <div className={isDarkMode? "page-container-dark" : "page-container-light"}>
       <h2>Your saved news</h2>
       {savedNewsList.length > 0 ? (
         savedNewsList.map((news) => (

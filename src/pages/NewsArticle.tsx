@@ -7,6 +7,8 @@ import IconDate from "../assets/date.svg";
 import IconAuthor from "../assets/author.svg";
 import IconSource from "../assets/source.svg";
 import IconLink from "../assets/link.svg";
+import { useTheme } from "../context/theme-context";
+import "../styles/NewsArticle.css";
 
 interface NewsArticleProps{
   list: string;
@@ -17,6 +19,7 @@ function NewsArticlePage({list}: NewsArticleProps) {
   const { id } = useParams();
   const decodedTitle = decodeURIComponent(id || "");
   const navigate = useNavigate();
+  const {isDarkMode} = useTheme();
   
   useEffect(() => {
     if (list === "top"){
@@ -49,50 +52,50 @@ function NewsArticlePage({list}: NewsArticleProps) {
   }
 
   return (
-    <div className="news-article-container">
+    <div className={isDarkMode? "news-article-container-dark" : "news-article-container-light"}>
       <div className="back-container">
-        <button onClick={handleBack} className="i-btn">
+        <button onClick={handleBack} className={isDarkMode? "i-btn-dark" : "i-btn-light"}>
           <IconArrow/>
         </button>
         <p>Go back</p>
       </div>
       <div className="news-article-content">
-        <div className="news-article-header">
+        <div className={"news-article-header"}>
           <div className="news-article-introduction">
             <h1>{article.title}</h1>
-            <p>{article.description}</p>
+            <p className="font-m">{article.description}</p>
           </div>
           <hr />
           <ul className="news-article-facts">
             <li className="news-article-fact1">
               <IconDate/>
               <div>
-                <p>Date</p>
-                <p>{new Date(article.publishedAt).toLocaleDateString()}</p>
+                <p className="font-xs">Date</p>
+                <p className="font-s">{new Date(article.publishedAt).toLocaleDateString()}</p>
               </div>
             </li>
             <li className="news-article-fact1">
               <IconAuthor/>
               <div>
-                <p>Author</p>
-                <p>{article.author}</p>
+                <p className="font-xs">Author</p>
+                <p className="font-s">{article.author}</p>
               </div>
             </li>
             <li className="news-article-fact1">
               <IconSource/>
               <div>
-                <p>Source</p>
-                <p>{article.source.name}</p>
+                <p className="font-xs">Source</p>
+                <p className="font-s">{article.source.name}</p>
               </div>
             </li>
             <li className="news-article-fact2">
               <IconLink/>
-              <a href={article.url || ""}>Link to original news</a>
+              <a href={article.url || ""} className="font-s">Link to original news</a>
             </li>
           </ul>
         </div>
         <img src={article.urlToImage || ""} alt={article.title} />
-        <p>{article.content}</p>
+        <p className="font-m">{article.content}</p>
       </div>
     </div>
   )

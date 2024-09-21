@@ -46,7 +46,7 @@ function NewsList({ newsList }: NewsListProps) {
         <button 
           disabled={paginatedNewsList.length < limit}
           onClick={() => setPage(page + 1)}
-          className={isDarkMode? "s-btn-dark" : "s-btn-light"}
+          className={isDarkMode? "s-btn-dark font-s" : "s-btn-light font-s"}
         >
           Next
         </button>

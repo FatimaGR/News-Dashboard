@@ -1,6 +1,7 @@
 import { useState } from "react";
 import IconSearch from "../assets/search.svg";
 import "../styles/Search.css";
+import { useTheme } from "../context/theme-context";
 
 interface SearchProps{
   onSubmit: (title: string) => void;
@@ -8,6 +9,7 @@ interface SearchProps{
 
 function Search({onSubmit}: SearchProps) {
   const [word, setWord] = useState<string>("");
+  const { isDarkMode } = useTheme();
 
   const handleWordChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setWord(event.target.value);
@@ -20,14 +22,14 @@ function Search({onSubmit}: SearchProps) {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="search-form-light">
-        <button className="search-btn-light">
+      <form onSubmit={handleSubmit} className={isDarkMode? "search-form-dark" : "search-form-light"}>
+        <button className={isDarkMode? "search-btn-dark" : "search-btn-light"}>
           <IconSearch/>
         </button>
         <input 
           type="text" 
           placeholder="Search..." 
-          className="search-input-light"
+          className={isDarkMode? "search-input-dark" : "search-input-light"}
           onChange={handleWordChange}
         />
       </form>

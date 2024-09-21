@@ -1,3 +1,5 @@
+import { useTheme } from "../context/theme-context";
+
 interface SortProps{
   id: string;
   value: string;
@@ -7,8 +9,10 @@ interface SortProps{
 };
 
 function Sort({id, value, onChange, label, Icon}: SortProps) {
+  const { isDarkMode } = useTheme();
+
   return(
-    <label htmlFor={id} className="is-btn">
+    <label htmlFor={id} className={isDarkMode ? "is-btn-dark font-s" : "is-btn-light font-s"}>
       <input
         type="radio"
         id={id}

@@ -10,6 +10,7 @@
   left: 0;
   min-width: 16.944rem;
   height: 100vh;
+  z-index: 100;
 }
 .nav-container-light{
   background: #CCFFCC;

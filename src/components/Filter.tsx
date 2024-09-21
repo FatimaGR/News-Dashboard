@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { NewsArticle } from "../interfaces";
 import { getNews } from "../services/services";
+import { useTheme } from "../context/theme-context";
 
 interface FilterProps{
   filter: string[];
@@ -10,6 +11,7 @@ interface FilterProps{
 function Filter({ filter, onFilterChange }: FilterProps) {
   const [localFilter, setLocalFilter] = useState<string[]>([]);
   const [sources, setSources] = useState<string[]>([]);
+  const { isDarkMode } = useTheme();
 
   const getSources = (news:NewsArticle[]) => {
     let sources: string[] = [];
@@ -54,18 +56,20 @@ function Filter({ filter, onFilterChange }: FilterProps) {
   return (
     <div className="source-container">
       <p>News Sources</p>
-      {sources?.map((source, index) => (
-        <label key={index} htmlFor={source} className="s-btn">
-          {source}
-          <input 
-            type="checkbox" 
-            id={source}
-            name={source}
-            value={source}
-            onChange={handleCheckbox}
-          />
-        </label>
-      ))}
+      <div className="filter-container">
+        {sources?.map((source, index) => (
+          <label key={index} htmlFor={source} className={isDarkMode ? "s-btn-dark font-s" : "s-btn-light font-s"}>
+            {source}
+            <input 
+              type="checkbox" 
+              id={source}
+              name={source}
+              value={source}
+              onChange={handleCheckbox}
+              />
+          </label>
+        ))}
+      </div>
     </div>
   )
 };

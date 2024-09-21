@@ -58,11 +58,13 @@ h3{
   display: flex;
   gap: 1.111rem;
   background: #fff;
+  position: relative;
 }
 .authenticated-container-dark{
   display: flex;
   gap: 1.111rem;
   background: #2E2E2E;
+  position: relative;
 }
 .page-container-light,
 .page-container-dark{
@@ -79,6 +81,12 @@ h3{
 .page-container-dark{
   color: #F2F2F2;
 }
+.news-list-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.556rem;
+}
 .news-list-content{
   display: flex;
   flex-wrap: wrap;
@@ -86,11 +94,34 @@ h3{
   width: 100%;
   gap: 1.667rem;
 }
+.pages-container{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
 .recent-list-container{
   display: flex;
   justify-content: space-between;
   gap: 1.111rem;
   flex-wrap: wrap;
+}
+.sort-container{
+  width: 100%;
+  display: flex;
+  gap: 0.889rem;
+}
+.source-container{
+  display: flex;
+  flex-direction: column;
+  gap: 0.556rem;
+  max-width: 100%;
+}
+.filter-container{
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.833rem;
 }
 
 /* button styles */
@@ -105,8 +136,11 @@ input{
   border: none;
   box-sizing: border-box;
 }
-div,
 label{
+  box-sizing: border-box;
+  cursor: pointer;
+}
+div{
   box-sizing: border-box;
 }
 
@@ -178,6 +212,10 @@ label{
   background: #6BBF9F;
   box-shadow: none;
 }
+.s-btn-light input,
+.s-btn-dark input{
+  display: none;
+}
 
 .is-btn-light,
 .is-btn-dark{
@@ -201,6 +239,15 @@ label{
 }
 .is-btn-dark:hover{
   color: #6BBF9F;
+}
+.is-btn-light input,
+.is-btn-dark input{
+  display: none;
+}
+.is-btn-light svg,
+.is-btn-dark svg{
+  width: 1.111rem;
+  height: 1.111rem;
 }
 
 .m-btn-light,
@@ -256,13 +303,14 @@ label{
 
 .nav-btn-light,
 .nav-btn-dark{
-  font-size: 1.333rem;
+  font-size: 1rem;
   background: none;
   border: none;
   border-radius: 0.556rem;
   width: 100%;
-  padding: 0.833rem;
+  padding: 0.667rem;
   display: flex;
+  align-items: center;
   gap: 0.444rem;
   cursor: pointer;
 }
@@ -272,8 +320,8 @@ label{
 }
 .nav-btn-light svg,
 .nav-btn-dark svg{
-  width: 1.722rem;
-  height: 1.722rem;
+  width: 1.389rem;
+  height: 1.389rem;
 }
 .nav-btn-light{
   color: #2E2E2E;

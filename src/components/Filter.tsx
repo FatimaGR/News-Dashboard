@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NewsArticle } from "../interfaces";
 import { getNews } from "../services/services";
 import { useTheme } from "../context/theme-context";
@@ -12,6 +12,7 @@ function Filter({ filter, onFilterChange }: FilterProps) {
   const [localFilter, setLocalFilter] = useState<string[]>([]);
   const [sources, setSources] = useState<string[]>([]);
   const { isDarkMode } = useTheme();
+  const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   const getSources = (news:NewsArticle[]) => {
     let sources: string[] = [];
@@ -46,25 +47,31 @@ function Filter({ filter, onFilterChange }: FilterProps) {
     if (checked){
       updatedFilter.push(value);
     } else {
-      updatedFilter = updatedFilter.filter(source => source != value)
+      updatedFilter = updatedFilter.filter(source => source != value);
     }
 
     setLocalFilter(updatedFilter);
     onFilterChange(updatedFilter);
-  }
+  };
 
   return (
     <div className="source-container">
       <p>News Sources</p>
       <div className="filter-container">
         {sources?.map((source, index) => (
-          <label key={index} htmlFor={source} className={isDarkMode ? "s-btn-dark font-s" : "s-btn-light font-s"}>
+          <label key={index} 
+            htmlFor={source}
+            className={`${isDarkMode ? "s-btn-dark font-s" : "s-btn-light font-s"} ${
+              inputRefs.current[index]?.checked ? "checked-filter" : ""
+            }`}
+          >
             {source}
             <input 
               type="checkbox" 
               id={source}
               name={source}
               value={source}
+              ref={(el) => (inputRefs.current[index] = el)}
               onChange={handleCheckbox}
               />
           </label>

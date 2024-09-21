@@ -203,6 +203,7 @@ div{
   box-shadow: 0px 2px 4px #1A1A1A;
   color: #CCFFCC;
 }
+.checked-filter,
 .s-btn-light:hover{
   color: #F2F2F2;
   background: #3A7A57;
@@ -244,6 +245,7 @@ div{
   color: #CCFFCC;
   box-shadow: 0px 4px 4px #1A1A1A;
 }
+.selected-sort,
 .is-btn-light:hover{
   color: #3A7A57;
 }

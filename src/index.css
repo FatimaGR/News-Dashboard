@@ -98,6 +98,12 @@ h3{
   width: 100%;
   gap: 1.667rem;
 }
+.saved-list-content{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 1.667rem;
+}
 .pages-container{
   width: 100%;
   display: flex;
@@ -375,7 +381,7 @@ div{
   display: none;
 }
 
-@media(max-width: 600px){
+@media(max-width: 834px){
   html{
     font-size: 16px;
   }
@@ -406,6 +412,7 @@ div{
   .nav-container-light,
   .nav-container-dark{
     position: fixed;
+    gap: 0.8rem;
   }
   .close-svg{
     display: flex;
@@ -420,9 +427,39 @@ div{
     width: 3rem;
     height: 3rem;
   }
+  .news-article-content{
+    max-width: 95%;
+  }
+  .news-article-facts{
+    min-width: 12rem;
+  }
 }
-@media(max-width: 400px){
-  html{
-    font-size: 14px;
+@media(max-width: 560px){
+  .recent-card-container-light,
+  .recent-card-container-dark{
+    width: 100%;
+  }
+  .news-card-container-light,
+  .news-card-container-dark{
+    width: 90%;
+  }
+  .news-list-container{
+    gap: 2rem;
+  }
+  .news-list-content,
+  .saved-list-content{
+    justify-content: center;
+  }
+  .recent-card-container-light img,
+  .recent-card-container-dark img{
+    width: 35%;
+  }
+  .i-btn-light, .i-btn-dark{
+    width: 3rem;
+    height: 3rem;
+  }
+  .i-btn-light svg, .i-btn-dark svg{
+    width: 1.6rem;
+    height: 1.6rem;
   }
 }

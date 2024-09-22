@@ -15,7 +15,7 @@ function Navbar() {
   const [selected, setSelected] = useState("home");
   const navigate = useNavigate();
   const { isDarkMode, changeTheme } = useTheme();
-  const [menuToggle, setMenuToggle] = useState(false);
+  const [menuToggle, setMenuToggle] = useState(true);
 
   const handleMenuToggle = () => {
     setMenuToggle(!menuToggle);

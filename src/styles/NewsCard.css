@@ -89,3 +89,17 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+@media(max-width: 1024px){
+  .recent-card-container-light,
+  .recent-card-container-dark{
+    width: 48%;
+  }
+  .news-card-container-light,
+  .news-card-container-dark{
+    width: 45%;
+  }
+  .news-card-container-light img,
+  .news-card-container-dark img{
+    height: 12rem;
+  }
+}

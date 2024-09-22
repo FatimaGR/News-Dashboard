@@ -38,13 +38,15 @@ function Saved() {
   return (
     <div className={isDarkMode? "page-container-dark" : "page-container-light"}>
       <h2>Your saved news</h2>
-      {savedNewsList.length > 0 ? (
-        savedNewsList.map((news) => (
-          <NewsCard key={news.title} article={news} userSavedNews={userData.savedNews}/>
-        ))
-      ) : (
-        <p>No saved articles yet.</p>
-      )}
+      <div className="saved-list-content">
+        {savedNewsList.length > 0 ? (
+          savedNewsList.map((news) => (
+            <NewsCard key={news.title} article={news} userSavedNews={userData.savedNews}/>
+          ))
+        ) : (
+          <p>No saved articles yet.</p>
+        )}
+      </div>
     </div>
   )
 }

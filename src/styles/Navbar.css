@@ -1,3 +1,16 @@
+.small-container-light,
+.small-container-dark,
+.close-svg{
+  display: none;
+}
+.small-container-light,
+.small-container-light svg{
+  color: #2E2E2E;
+}
+.small-container-dark,
+.small-container-dark svg{
+  color: #CCFFCC;
+}
 .nav-container-light,
 .nav-container-dark{
   padding: 1.778rem 1.333rem;
@@ -8,7 +21,7 @@
   gap: 1.333rem;
   top: 0;
   left: 0;
-  min-width: 16.944rem;
+  width: 16.944rem;
   height: 100vh;
   z-index: 100;
 }

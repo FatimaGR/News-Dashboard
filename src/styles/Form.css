@@ -9,6 +9,7 @@
 .unauthenticated-content{
   background: #fff;
   width: 22.778rem;
+  max-width: 90%;
   min-height: 26.111rem;
   border-radius: 1.111rem;
   text-align: center;

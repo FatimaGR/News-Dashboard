@@ -1,9 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
+html{
+  font-size: 18px;
+}
 body{
   margin: 0;
   font-family: "Roboto", system-ui;
-  font-size: 18px;
+  font-size: 1rem;
   line-height: 32px;
 }
 a{
@@ -109,6 +112,7 @@ h3{
 .sort-container{
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   gap: 0.889rem;
 }
 .source-container{
@@ -130,6 +134,7 @@ button{
   border: none;
   cursor: pointer;
   box-sizing: border-box;
+  max-width: 100%;
 }
 input{
   outline: none;
@@ -364,4 +369,60 @@ div{
 }
 .search-btn-dark:hover{
   color: #6BBF9F;
+}
+
+.none{
+  display: none;
+}
+
+@media(max-width: 600px){
+  html{
+    font-size: 16px;
+  }
+  .small-container-light,
+  .small-container-dark{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.667rem 1.778rem;
+    padding-bottom: 0;
+  }
+  .nav-svg{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .authenticated-container-light,
+  .authenticated-container-dark{
+    flex-direction: column;
+  }
+  .page-container-light,
+  .page-container-dark{
+    padding-top: 0;
+  }
+  .big-nav-title{
+    display: none;
+  }
+  .nav-container-light,
+  .nav-container-dark{
+    position: fixed;
+  }
+  .close-svg{
+    display: flex;
+    align-items: center;
+  }
+  .small-container-light svg,
+  .small-container-dark svg{
+    width: 2rem;
+    height: 2rem;
+  }
+  .close-svg svg{
+    width: 3rem;
+    height: 3rem;
+  }
+}
+@media(max-width: 400px){
+  html{
+    font-size: 14px;
+  }
 }

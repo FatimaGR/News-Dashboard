@@ -45,9 +45,9 @@ To view it open http://localhost:5173
 
 ## Overview
 ### Screenshot
-![](./readme-images/home.png)
+![](./readme-images/Screenshot.png)
 ### Links
-- Live Site URL: [News Dashboard]( )
+- Live Site URL: [News Dashboard](https://news-dashboard-fatimagr.vercel.app)
 - Code in Github: [https://github.com/FatimaGR/News-Dashboard](https://github.com/FatimaGR/News-Dashboard)
 
 ## How to use

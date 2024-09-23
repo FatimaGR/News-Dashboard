@@ -7,7 +7,7 @@
 ## Table of contents
 - [Getting Started](#getting-started)
   - [Built with](#built-with)
-  - [Installation](#installation)
+  - [Setup Instructions](#setup-instructions)
 - [Overview](#overview)
   - [Screenshot](#screenshot)
   - [Links](#links)
@@ -32,12 +32,18 @@
 - Firebase
 - [News API](https://newsapi.org)
 
-### Installation
-Run the following commands:
+### Setup Instructions
+1. Clone the repository.
+2. Run the following command to install all dependencies:
 ```
 npm install
 ```
-Running the app
+3. Create a ".env" file in the root of the project and add the following variable:
+```
+VITE_NEWS_API_KEY=your-api-key-here
+```
+4. Replace "your-api-key-here" with your actual News API key. You can obtain a key by signing up at [News API](https://newsapi.org/).
+5. Run the project with the following command:
 ```
 npm run dev
 ```
@@ -47,7 +53,6 @@ To view it open http://localhost:5173
 ### Screenshot
 ![](./readme-images/Screenshot.png)
 ### Links
-- Live Site URL: [News Dashboard](https://news-dashboard-fatimagr.vercel.app)
 - Code in Github: [https://github.com/FatimaGR/News-Dashboard](https://github.com/FatimaGR/News-Dashboard)
 
 ## How to use

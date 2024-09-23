@@ -1,50 +1,79 @@
-# React + TypeScript + Vite
+<h1 align="center">News Dashboard</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<div align="center">
+   Your trusted space for staying informed with clarity and peace of mind.
+</div>
 
-Currently, two official plugins are available:
+## Table of contents
+- [Getting Started](#getting-started)
+  - [Built with](#built-with)
+  - [Installation](#installation)
+- [Overview](#overview)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [How to use](#how-to-use)
+  - [User account](#user-account)
+  - [Home](#home)
+  - [Save article](#save-article)
+  - [Article](#article)
+- [Contact](#contact)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Getting Started
+### Built with
+![Static Badge](https://img.shields.io/badge/TypeScript-green?style=flat&logo=typescript&logoColor=%232E2E2E&logoSize=auto&labelColor=%2377DD77&color=%2377DD77&cacheSeconds=3600)
+![Static Badge](https://img.shields.io/badge/React-green?style=flat&logo=react&logoColor=%232E2E2E&logoSize=auto&labelColor=%2377DD77&color=%2377DD77&cacheSeconds=3600)
+![Static Badge](https://img.shields.io/badge/CSS-green?style=flat&logo=css3&logoColor=%232E2E2E&logoSize=auto&labelColor=%2377DD77&color=%2377DD77&cacheSeconds=3600)
+![Static Badge](https://img.shields.io/badge/Firebase-green?style=flat&logo=firebase&logoColor=%232E2E2E&logoSize=auto&labelColor=%2377DD77&color=%2377DD77&cacheSeconds=3600)
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Typescript
+- React
+- CSS
+- Firebase
+- [News API](https://newsapi.org)
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Installation
+Run the following commands:
 ```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+npm install
 ```
+Running the app
+```
+npm run dev
+```
+To view it open http://localhost:5173
+
+## Overview
+### Screenshot
+![](./readme-images/home.png)
+### Links
+- Live Site URL: [News Dashboard]( )
+- Code in Github: [https://github.com/FatimaGR/News-Dashboard](https://github.com/FatimaGR/News-Dashboard)
+
+## How to use
+### User account
+To use News Dashboard, you need an account. You can log in from the Login page or create a new account on the Sign Up page.
+
+![](./readme-images/User-account.png)
+
+### Home
+After you logged in, you will see the "Home" page, where you can browse articles, sort, search, and filter them by news source. 
+
+You will also find the navbar, where you can switch between light and dark mode, go to the "Saved" page, or log out.
+
+![](./readme-images/Home.png)
+
+### Save article
+To save an article, click the green button in the top-right corner of the article. You can view all your saved articles on the "Saved" page.
+
+![](./readme-images/Save-article.png)
+
+### Article
+To read an article, click the "Read More" button. This will take you to a page with all the details, like date, author, news source, and a link to the original article.
+
+![](./readme-images/Article.png)
+
+
+## Contact
+- Website - [Fatima Gallardo](https://porfolio-website-gules.vercel.app)
+- GitHub - [@FatimaGR](https://github.com/FatimaGR)
